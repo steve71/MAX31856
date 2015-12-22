@@ -70,6 +70,9 @@ class max31856(object):
 		[tc_highByte, tc_middleByte, tc_lowByte] = [out[0], out[1], out[2]]	
 		temp = ((tc_highByte << 16) | (tc_middleByte << 8) | tc_lowByte) >> 5
 		
+		if (tc_highByte & 0x80):
+			temp -= 0x80000
+		
 		temp_C = temp * 0.0078125
 		
 		fault = out[3]
