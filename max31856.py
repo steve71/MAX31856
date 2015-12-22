@@ -109,6 +109,9 @@ class max31856(object):
 		temp = ((junc_msb << 8) | junc_lsb) >> 2
 		temp = offset + temp
 		
+		if (junc_msb & 0x80):
+			temp -= 0x4000
+		
 		temp_C = temp * 0.015625
 		
 		return temp_C
