@@ -47,7 +47,15 @@ class max31856(object):
 		# bit 1: Thermocouple Type -> K Type (default)   -> 1 (default)
 		# bit 0: Thermocouple Type -> K Type (default)   -> 1 (default)
 		#
-		self.writeRegister(1, 0x03)
+		#Uncomment one of the following to select thermocouple type
+		#self.writeRegister(1, 0x00) #for B Type
+		#self.writeRegister(1, 0x01) #for E Type
+		#self.writeRegister(1, 0x02) #for J Type
+		self.writeRegister(1, 0x03) #for K Type
+		#self.writeRegister(1, 0x04) #for N Type
+		#self.writeRegister(1, 0x05) #for R Type
+		#self.writeRegister(1, 0x06) #for S Type
+		#self.writeRegister(1, 0x07) #for T Type
 		
 	def setupGPIO(self):
 		GPIO.setwarnings(False)
