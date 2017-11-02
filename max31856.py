@@ -85,21 +85,21 @@ class max31856(object):
 		
 		fault = out[3]
 		
-		if ((fault & 0x80) == 1):
+		if ((fault & 0x80) != 0):
 			raise FaultError("Cold Junction Out-of-Range")
-		if ((fault & 0x40) == 1):
+		if ((fault & 0x40) != 0):
 			raise FaultError("Thermocouple Out-of-Range")
-		if ((fault & 0x20) == 1):
+		if ((fault & 0x20) != 0):
 			raise FaultError("Cold-Junction High Fault")
-		if ((fault & 0x10) == 1):
+		if ((fault & 0x10) != 0):
 			raise FaultError("Cold-Junction Low Fault")
-		if ((fault & 0x08) == 1):
+		if ((fault & 0x08) != 0):
 			raise FaultError("Thermocouple Temperature High Fault")
-		if ((fault & 0x04) == 1):
+		if ((fault & 0x04) != 0):
 			raise FaultError("Thermocouple Temperature Low Fault")
-		if ((fault & 0x02) == 1):
+		if ((fault & 0x02) != 0):
 			raise FaultError("Overvoltage or Undervoltage Input Fault")
-		if ((fault & 0x01) == 1):
+		if ((fault & 0x01) != 0):
 			raise FaultError("Thermocouple Open-Circuit Fault")
 				
 		return temp_C
